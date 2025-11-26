@@ -37,5 +37,24 @@ console.log(null + 1)       // 1
 // typeof null === "object"   // 历史遗留 bug
 let name = 'pink'
 console.log(typeof name)        /string
+
 */
+
+/*
+data type transfer: 
+inner:
+    string + everything = string;
+    string -/* everything = NaN
+    'number' -/* everything = number
+    + 'number' = number     //positive transfer
+outter:
+    let num = Numbe(prompt('Enter your age'))
+    let num = + prompt('Enter your age')        //same
+
+    parseInt()      //int
+    parseFloat()        //float
+*/
+
+
+
 
