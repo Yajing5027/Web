@@ -12,6 +12,34 @@
         button:hover {
             background-color: yellow;
         }
+        
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            height: fit-content;
+            width:fit-content;
+            border: 1px solid black;
+            margin: 5px 0;
+            padding-top: 20px;
+        }
+
+        .bar {
+            position: relative;
+            width: 60px;
+            background-color: pink;
+            margin: 0 5px; 
+            border: 1px solid black;
+        }
+        .bar span {
+            position: absolute;
+            top: -20px;
+            margin: 0;
+        }
+        .bar h4 {
+            position: absolute;
+            bottom: -40px;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -19,6 +47,8 @@
     <button>b1</button>
     <button>b2</button>
     <button>b3</button>
+
+
 
     <script src="test.js"></script>
 </body>

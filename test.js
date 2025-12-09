@@ -22,37 +22,56 @@ console.log(PI)
 
 let num1 = 10, num2 = 20
 [num1, num2] = [num2, num1]
+*/
 
+/*
+// Array
+    let numbers = [10,1,23,55,50]
+    // 增
+        数组.push()   //追加末尾，跟python里的append一样
+        数组.unshift()    //追加开头
 
+    // 删
+        数组.pop()    //删减末尾，括号内不加任何参数
+        数组.shift()    //删减开头，括号内不加任何参数
+        数组.splice(起始索引位置,个数)  //指定位置
 
-//Array + Template Literal: ` ${} ` like <f string   in python>
-let numbers = [10,1,23,55,50]
+    // js中长度是数组的属性，用 数组.length; python中长度是一个方法函数，用len()
+        numbers.length
+
+    // sort函数-排序：sort(function(){})
+        numbers.sort(function(a,b) {    //升序
+            return a - b
+        })
+        numbers.sort(function(a,b) {   //降序
+            return b - a
+        })
+// Template Literal: ` ${} ` like <f string   in python>
 console.log(`The number array is ${numbers} and the array length is ${numbers.length}`)
+*/
 
 
+/*
 // data type: undefined have't value; null have value but programer set an empty value, like<None in python>.
 console.log(undefined + 1)      // NaN
 console.log(null + 1)       // 1
 
-// typeof null === "object"   // 历史遗留 bug
-let name = 'pink'
-console.log(typeof name)        /string
+    // typeof null === "object"   // 历史遗留 bug
+    let name = 'pink'
+    console.log(typeof name)        /string
 
-*/
+    //data type transfer: 
+        inner:
+            string + everything = string;
+            string -/* everything = NaN
+            'number' -/* everything = number
+            + 'number' = number     //positive transfer
+        outter:
+            let num = Numbe(prompt('Enter your age'))
+            let num = + prompt('Enter your age')        //same
 
-/*
-data type transfer: 
-    inner:
-        string + everything = string;
-        string -/* everything = NaN
-        'number' -/* everything = number
-        + 'number' = number     //positive transfer
-    outter:
-        let num = Numbe(prompt('Enter your age'))
-        let num = + prompt('Enter your age')        //same
-
-        parseInt()      //int
-        parseFloat()        //float
+            parseInt()      //int
+            parseFloat()        //float
 */
 
 
@@ -88,7 +107,7 @@ data type transfer:
     alert(year % 4 === 0 && year%100 !==0 || year % 400 === 0)
 */
 
-/**/
+/*
 // 条件语句
     // if 后要加() 后要加{}
     if (条件) {
@@ -124,3 +143,22 @@ data type transfer:
     for (初始变量值;条件;变化量) {
         blank
     }
+
+    let letter = ['a','b','c','d']
+    for (let i = 0; i < letter.length; i++) {
+        console.log(letter[i]);        
+    }
+        // 无限循环：括号里没有任何参数和条件，没有内置break就是死循环
+        for (;;) {
+            console.log('无限循环');
+            if (某个条件) {
+                break;  // 满足条件时退出
+            }
+        }
+*/
+
+
+// 函数
+function 函数名() {
+    blank
+}
