@@ -1,0 +1,17 @@
+/* CSS选择器
+- id 用 # ，如 #name 选择 id="name" 的元素。
+- class 用 . ，如 .container 选择 class="container" 的元素。
+- 标签 直接写，如 div 选择所有 <div>。
+- 属性 用 [ ] ，如 [type="text"] 选择 type="text" 的元素。
+*/
+
+/* display属性总结：控制元素布局和显示方式
+常见值：
+- block：块级元素，独占一行
+- inline：内联元素，不独占行
+- inline-block：内联块级
+- none：隐藏元素
+- flex：弹性布局
+- grid：网格布局
+等
+JS设置：对象.style.display = 'block' 或 'none' 等 */

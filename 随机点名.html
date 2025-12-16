@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名</title>
+    <style>
+        body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background-color:#f0f0f0}
+        .container{text-align:center;background:white;padding:40px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+        .container div:first-child{font-size:28px;font-weight:bold;color:#333;margin-bottom:20px}
+        div{font-size:24px}
+        #name{font-weight:bold;color:red}
+        button{font-size:18px;padding:10px 20px;margin:10px;border:none;border-radius:5px;cursor:pointer;background-color:#4CAF50;color:white}
+        button:hover{background-color:#45a049}
+        button:disabled{background-color:#ccc;cursor:not-allowed;opacity:0.6}
+        .end{background-color:#f44336}
+        .end:hover{background-color:#da190b}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>随机抽取</div>
+        <span>角色：</span>
+        <span class="role"></span>
+        <div class="btns">
+            <button class="start">开始</button>
+            <button class="end">停止</button>
+        </div>
+    </div>
+
+    <script>
+        let characterNames = ['Superman', 'Batman', 'Wonder Woman', 'Spider-Man', 'Iron Man', 'Captain America']
+        let role = document.querySelector('.role')
+        let start = document.querySelector('.start')
+        let end = document.querySelector('.end')
+        let timer = null     // 声明 timer 为全局变量
+        let index = null
+        start.addEventListener('click',function(){
+            if (characterNames.length === 1) {
+                start.disabled = true
+                end.disabled = true
+            } else {
+                timer = setInterval(function() { // 赋值给全局 timer
+                    index = Math.floor(Math.random() * characterNames.length)
+                    role.innerHTML = characterNames[index]
+                },100)
+            }
+        })
+        end.addEventListener('click',function(){
+            if (index !== null) {
+                clearInterval(timer)
+                characterNames.splice(index,1)
+            }
+        })
+    </script>
+</body>
+</html>

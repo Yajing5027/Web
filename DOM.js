@@ -1,4 +1,3 @@
-/
 // 获取页面标签
 document.querySelector('css选择器')     //返回第一个元素，可直接修改
 document.querySelectorAll('css选择器')  //返回伪数组，需要遍历才能修改
@@ -7,6 +6,7 @@ document.querySelectorAll('css选择器')  //返回伪数组，需要遍历才�
     // 读写元素内容
     对象.innerText      // 读写纯文本内容
     对象.innerHTML      // 读写含HTML标签的内容
+    对象.innerHTML += '追加内容'        // 前两个会覆盖，这个不会
 
     // 读写元素属性
     对象.属性
@@ -16,7 +16,7 @@ document.querySelectorAll('css选择器')  //返回伪数组，需要遍历才�
         // 读类名
         对象.className      // 读取整个class属性值，返回字符串（如"nav box"）
         对象.classList      // 读取类名列表，返回DOMTokenList对象（如class="nav box"，返回['nav', 'box']）
-        // 借助类可批量修改样式属性
+        // 借助类方法可批量修改样式属性
         对象.className = 'new类名'       // 添加修改类名，会覆盖之前类名
         对象.classList.add('new类名')      // 追加类名，不会覆盖之前的类名
         对象.classList.remove('类名')       // 删除类名
@@ -56,3 +56,4 @@ clearInterval(变量名)
 
 // 事件监听
 对象.addEventListener('事件类型',函数)
+

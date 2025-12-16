@@ -46,6 +46,9 @@ let num1 = 10, num2 = 20
         numbers.sort(function(a,b) {   //降序
             return b - a
         })
+
+    // 自增循环数组索引：
+        i = (i + 1) % 数组.length      // 循环0到arr.length-1
 // Template Literal: ` ${} ` like <f string   in python>
 console.log(`The number array is ${numbers} and the array length is ${numbers.length}`)
 */
