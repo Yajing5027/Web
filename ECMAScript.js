@@ -47,8 +47,10 @@ let num1 = 10, num2 = 20
             return b - a
         })
 
-    // 自增循环数组索引：
-        i = (i + 1) % 数组.length      // 循环0到arr.length-1
+    // 取模运算循环数组索引：循环0到arr.length-1
+        i = (i + 1) % 数组.length      // 向后循环
+        i = (i - 1 + 数组.length) % 数组.length   // 向前循环，避免负索引
+        
 // Template Literal: ` ${} ` like <f string   in python>
 console.log(`The number array is ${numbers} and the array length is ${numbers.length}`)
 */

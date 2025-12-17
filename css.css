@@ -2,7 +2,24 @@
 - id 用 # ，如 #name 选择 id="name" 的元素。
 - class 用 . ，如 .container 选择 class="container" 的元素。
 - 标签 直接写，如 div 选择所有 <div>。
-- 属性 用 [ ] ，如 [type="text"] 选择 type="text" 的元素。
+- 属性 用 [ ] ，如 [type="text"] 选择 type="text" 的元素，在多个同元素的情况下，可精准选择对应属性的元素。
+- 伪类 用 : ，选择元素的特定状态或位置（不是真正的class，而是基于条件）。
+  - 常见伪类：
+    - :hover：鼠标悬停时
+    - :active：点击激活时
+    - :focus：获得焦点时（e.g., 输入框）
+    - :visited：已访问链接
+    - :link：未访问链接
+    - :first-child：第一个子元素
+    - :last-child：最后一个子元素
+    - :nth-child(n)：第n个子元素（n从1开始，可用odd/even/2n+1等）
+    - :nth-of-type(n)：同类型第n个子元素
+    - :not(selector)：排除匹配selector的元素
+    - :checked：选中状态（radio/checkbox）
+    - :disabled：禁用状态
+    - :enabled：启用状态
+  - 作用：根据元素位置或状态选择，如 :hover（鼠标悬停）、:first-child（第一个子元素）。
+  - 示例：li:nth-child(2) 选择第2个li；p:nth-child(odd) 选择奇数位置的p；input:checked { background: yellow; }
 */
 
 /* display属性总结：控制元素布局和显示方式
@@ -11,7 +28,41 @@
 - inline：内联元素，不独占行
 - inline-block：内联块级
 - none：隐藏元素
+    等同于：
+    - css: opacity: 0（仍占空间）
+    - HTML: hidden属性
 - flex：弹性布局
 - grid：网格布局
 等
 JS设置：对象.style.display = 'block' 或 'none' 等 */
+
+/* opacity属性：控制元素透明度
+- 值：0到1，0完全透明（隐藏），1完全不透明（显示）。
+- 示例：opacity: 0.5; // 半透明
+- JS设置：对象.style.opacity = '0.5';
+*/
+
+/* Emmet CSS缩写（在CSS文件中输入缩写+Tab展开）
+尺寸：
+- w200 → width: 200px;
+- h200 → height: 200px;
+- m10 → margin: 10px;
+- p20 → padding: 20px;
+- m0a → margin: 0 auto;
+
+颜色：
+- bgc#fff → background-color: #fff;
+- c#000 → color: #000;
+
+布局：
+- db → display: block;
+- dib → display: inline-block;
+- fl → float: left;
+- fr → float: right;
+
+其他：
+- fz14 → font-size: 14px;
+- bd → border: 1px solid #000;
+- bdr5 → border-radius: 5px;
+- tac → text-align: center;
+*/

@@ -56,4 +56,32 @@ clearInterval(变量名)
 
 // 事件监听
 对象.addEventListener('事件类型',函数)
+    // 事件类型
+        click        // 鼠标点击事件
+        mouseenter   // 鼠标进入元素事件
+        mouseleave   // 鼠标离开元素事件
+        Keydown      // 键盘按键按下事件
+        Keyup        // 键盘按键释放事件
+        focus        // 元素获得焦点事件
+        blur         // 元素失去焦点事件
+        input        // 输入框内容改变事件
 
+// 事件对象
+    // 事件监听器函数的参数，通常命名为event、e或eve，包含事件信息
+    function(e) {
+        console.log(e.target)  // 触发事件的元素
+        console.log(e.type)    // 事件类型，如'click'
+        e.preventDefault()     // 阻止默认行为，如表单提交
+        e.stopPropagation()    // 阻止事件冒泡
+        // 键盘事件
+        console.log(e.key)     // 按键值，如'Enter'
+        // 鼠标事件
+        console.log(e.clientX, e.clientY)  // 鼠标相对于视窗位置
+        console.log(e.offsetX, e.offsetY)  // 鼠标相对于触发元素位置
+    }
+    // 用法示例
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            console.log('按下了 Enter', e.target.value)
+        }
+    })
