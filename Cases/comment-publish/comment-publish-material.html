@@ -112,27 +112,10 @@
       <i class="avatar"></i>
       <div class="info">
         <p class="name">清风徐来</p>
-        <p class="text">大家都辛苦啦，感谢各位大大的努力，能圆满完成真是太好了[笑哭][支持]</p>
+        <p class="text">发布的评论内容</p>
         <p class="time">2022-10-10 20:29:21</p>
       </div>
     </div>
   </div>
-
-  <script>
-    const tx = document.querySelector('#tx')
-    const total = document.querySelector('.total')
-
-    tx.addEventListener('focus',function(){
-        total.style.opacity = 1
-    })
-    tx.addEventListener('blur',function(){
-        total.style.opacity = 0
-    })
-    
-    tx.addEventListener('input',function(){
-        total.innerHTML = `${tx.value.length}/200`
-    })
-  </script>
 </body>
-
 </html>

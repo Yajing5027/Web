@@ -1,0 +1,68 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据柱状图</title>
+    <style>
+        .chart {
+            display: flex;  /* 弹性布局 */
+            align-items: flex-end;  /* 底部对齐 */
+            height: fit-content;  /* 高度自适应 */
+            width: fit-content;  /* 宽度自适应 */
+            border: 1px solid black;  /* 边框 */
+            margin: 5px 0;  /* 外边距 */
+            padding-top: 20px;  /* 内边距顶部 */
+        }
+
+        .bar {
+            position: relative;  /* 相对定位 */
+            width: 60px;  /* 宽度 */
+            background-color: pink;
+            margin: 0 5px;  /* 外边距 */
+            border: 1px solid black;  /* 边框 */
+        }
+
+        .bar span {
+            position: absolute;  /* 绝对定位 */
+            top: -20px;  /* 顶部偏移 */
+            margin: 0;
+        }
+
+        .bar h4 {
+            position: absolute;  /* 绝对定位 */
+            bottom: -40px;  /* 底部偏移 */
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let data = [];
+        for (let i = 1; i <= 4; i++) {
+            let quarter = +prompt(`请输入第${i}季度的数据：`);
+            data.push(quarter);
+        }
+
+        document.write("<div class='chart'>");
+        for (let i = 0; i < data.length; i++) {
+            document.write(`
+                <div class='bar' style='height: ${data[i]}px'>
+                    <span>${data[i]}</span>
+                    <h4>第${i + 1}季度</h4>
+                </div>
+            `);
+        }
+        document.write('</div>');
+    </script>
+</body>
+
+</html>
+

@@ -91,6 +91,9 @@ False：0、false、null、undefined、NaN、""（空字符串）。
 
             parseInt()      //int
             parseFloat()        //float
+
+    // 字符串方法
+        str.trim()     // 去除两端空白字符，相当于Python的strip()
 */
 
 

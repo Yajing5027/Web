@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九九乘法表</title>
+    <style>
+        table {  /* 表格 */
+            border-collapse: collapse;  /* 合并边框 */
+            margin: 20px;  /* 外边距 */
+        }
+
+        th, td {  /* 表头，单元格 */
+            border: 1px solid black;  /* 边框 */
+            padding: 8px;  /* 内边距 */
+            text-align: center;  /* 文字排列：居中，左对齐就是left */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.write('<table>');
+
+        for (let i = 1; i <= 9; i++) {
+            document.write('<tr>');
+            for (let j = 1; j <= i; j++) {
+                if (j === 1 && i === 1) {  // 为了复习全等和if故意加的表头
+                    document.write(`<th> ${j}*${i} = ${j * i} </th>`);
+                } else {
+                    document.write(`<td> ${j}*${i} = ${j * i} </td>`);
+                }
+            }
+            document.write('</tr>');
+        }
+
+        document.write('</table>');
+    </script>
+</body>
+
+</html>
+

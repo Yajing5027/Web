@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态渲染表格</title>
+    <style>
+        table {  /* 表格 */
+            border-collapse: collapse;  /* 合并边框 */
+            margin: 20px;  /* 外边距 */
+        }
+
+        th, td {  /* 表头，单元格 */
+            border: 1px solid black;  /* 边框 */
+            padding: 8px;  /* 内边距 */
+            text-align: center;  /* 文字排列：居中，左对齐就是left */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let student = [
+            {name: 'Alice', age: 20, gender: 'Female', city: 'New York'},
+            {name: 'Bob', age: 22, gender: 'Male', city: 'Los Angeles'},
+            {name: 'Charlie', age: 19, gender: 'Male', city: 'Chicago'},
+            {name: 'Diana', age: 21, gender: 'Female', city: 'Houston'}
+        ];
+
+        document.write('<table>');
+
+        // 表头
+        document.write('<tr>');
+        document.write('<th>序号</th>');
+        for (let key in student[0]) {
+            document.write(`<th>${key}</th>`);
+        }
+        document.write('</tr>');
+
+        // 单元格循环
+        for (let i = 0; i < student.length; i++) {
+            document.write('<tr>');
+            document.write(`<td>${i + 1}</td>`);
+            for (let key in student[i]) {
+                document.write(`<td>${student[i][key]}</td>`);
+            }
+            document.write('</tr>');
+        }
+
+        document.write('</table>');
+    </script>
+</body>
+
+</html>
+

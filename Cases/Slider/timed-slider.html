@@ -138,8 +138,8 @@
       img.src = sliderData[i].url
       p.innerHTML = sliderData[i].title
       footer.style.backgroundColor = sliderData[i].color
-      document.querySelector('.slider-indicator .active').classList.remove('active')
-      document.querySelector(`.slider-indicator li:nth-child(${i + 1})`).classList.add('active')
+      document.querySelector('.slider-indicator .active').classList.remove('active')  // 不能提前声明 .active 元素，因为它是动态的，提前声明会变成静态快照，无法实时反映当前 active 状态
+      document.querySelector(`.slider-indicator li:nth-child(${i + 1})`).classList.add('active')  // 同上，nth-child 选择是动态的
       i = (i+1) % sliderData.length   // 自增循环数组索引
 
     },1000)

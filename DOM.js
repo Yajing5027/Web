@@ -85,3 +85,15 @@ clearInterval(变量名)
             console.log('按下了 Enter', e.target.value)
         }
     })
+
+// 环境对象
+    this  // 指向当前执行上下文的对象
+        // 在全局作用域中（非函数内），this 指向 window 对象
+        // 没有对象的普通函数，this 指向 window
+        // 有对象的函数，this 指向调用它的对象
+        // 在事件监听器中，this 指向触发事件的元素
+        // 在构造函数中，this 指向新创建的实例
+        // 示例
+        button.addEventListener('click', function() {
+            console.log(this)  // 指向 button 元素
+        })

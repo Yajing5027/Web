@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告关闭</title>
+    <style>
+        .box {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            position: relative;
+        }
+
+        .box1 {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <button class="box1">X</button>
+        广告
+    </div>
+
+    <script>
+        const box = document.querySelector('.box');
+        const box1 = document.querySelector('.box1');
+
+        box1.addEventListener('click', function() {  // 给按钮添加事件监听
+            box.style.display = 'none';  // 隐藏大盒子
+        });
+    </script>
+</body>
+
+</html>
+

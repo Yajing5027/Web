@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阅读协议</title>
+    <style>
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10">
+用户注册协议
+
+欢迎注册成为我们的会员！
+
+在注册过程中，您需要提供真实、准确的信息，并同意遵守我们的使用条款和隐私政策。我们致力于保护您的个人数据安全，并为您提供优质的服务体验。
+
+请仔细阅读以下条款：
+
+1. 用户必须年满18岁。
+2. 禁止使用虚假信息注册。
+3. 我们保留随时修改条款的权利。
+
+点击已阅读按钮即表示您同意以上条款。
+    </textarea>
+
+    <br>
+
+    <button class='btn'>我已阅读用户协议(60)</button>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        let i = 60;  // 设置初始时间
+
+        let timer = setInterval(function() {  // 开启定时器
+            if (i > 0) {  // 不加判断会成负数
+                i--;
+                btn.innerHTML = `我已阅读用户协议(${i})`;  // 按钮显示时间变化
+            } else {
+                clearInterval(timer);  // 关闭定时器
+                btn.disabled = false;  // 可用按钮
+                btn.innerHTML = '我已阅读用户协议';  // 更改文字
+            }
+        }, 1000);  // 每隔一秒执行一次
+    </script>
+</body>
+
+</html>
+
