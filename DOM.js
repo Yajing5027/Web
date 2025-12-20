@@ -1,6 +1,16 @@
 // 获取页面标签
 document.querySelector('css选择器')     //返回第一个元素，可直接修改
 document.querySelectorAll('css选择器')  //返回伪数组，需要遍历才能修改
+    // 获取HTML元素
+    document.documentElement    // 获取 <html> 元素
+    document.body              // 获取 <body> 元素
+    document.head              // 获取 <head> 元素
+        // 示例：设置页面滚动
+        document.documentElement.scrollTop = 0;  // 滚动到页面顶部
+    // 获取设备信息
+    window.devicePixelRatio    // 设备像素比（高分辨率屏幕，如 Retina 为 2）
+        // 网页端（桌面）：通常 1-2；移动端：iPhone 为 2-3，Android 为 1-3
+        // 示例：console.log(window.devicePixelRatio);  // 输出 1 或 2
 
 // 操作元素属性
     // 读写元素内容
@@ -10,6 +20,33 @@ document.querySelectorAll('css选择器')  //返回伪数组，需要遍历才�
 
     // 读写元素属性
     对象.属性
+        // 元素尺寸和位置
+            // 滚动
+                // scroll：读写滚动距离，只读内容总尺寸（包括不可见部分）
+                对象.scrollTop    // 垂直滚动距离（像素）
+                对象.scrollLeft   // 水平滚动距离（像素）
+                对象.scrollWidth    // 内容总宽度（包括不可见部分）
+                对象.scrollHeight   // 内容总高度（包括不可见部分）
+    
+                // 滚动方法：只写
+                window.scrollTo(x, y)  // 滚动到指定位置（x水平像素，y垂直像素）
+                window.scrollTo({ top: y, left: x, behavior: 'smooth' })  // 平滑滚动
+
+            // offset：只读，包括边框、滚动条的尺寸和位置（相对于offsetParent）
+            对象.offsetWidth     // 宽度（包括边框、滚动条）
+            对象.offsetHeight    // 高度（包括边框、滚动条）
+            对象.offsetLeft      // 左边距（相对于offsetParent）
+            对象.offsetTop       // 上边距（相对于offsetParent）
+            对象.offsetParent    // 定位父元素
+
+            // client：只读，内容区域尺寸和边框宽度（不包括滚动条）
+            对象.clientWidth     // 内容宽度（不包括边框、滚动条）
+            对象.clientHeight    // 内容高度（不包括边框、滚动条）
+            对象.clientLeft      // 左边框宽度
+            对象.clientTop       // 上边框宽度
+
+            // getBoundingClientRect：只读，返回相对于视口的完整矩形信息
+            对象.getBoundingClientRect()    // 返回{top, right, bottom, left, width, height}
 
     // 读写样式属性
     对象.style.样式属性      // 针对性读写  backgroundColor ➡️ background-color 多组单词-命名转换为小驼峰命名
@@ -53,47 +90,72 @@ clearInterval(变量名)
 
 
 
-
-// 事件监听
-对象.addEventListener('事件类型',函数)
+// 事件: js交互的核心
     // 事件类型
-        click        // 鼠标点击事件
-        mouseenter   // 鼠标进入元素事件
-        mouseleave   // 鼠标离开元素事件
-        Keydown      // 键盘按键按下事件
-        Keyup        // 键盘按键释放事件
-        focus        // 元素获得焦点事件
-        blur         // 元素失去焦点事件
-        input        // 输入框内容改变事件
+        - click        // 鼠标点击事件
+        - mouseenter   // 鼠标经过元素事件
+        - mouseleave   // 鼠标离开元素事件
+        - mouseover    // 鼠标进入元素事件（会冒泡）
+        - mouseout     // 鼠标离开元素事件（会冒泡）
+        - Keydown      // 键盘按键按下事件
+        - Keyup        // 键盘按键释放事件
+        - focus        // 元素获得焦点事件
+        - blur         // 元素失去焦点事件
+        - input        // 输入框内容改变事件
+        - load         // 所有外部资源加载完毕事件
+            window.addEventListener('load',function(){})    // 等待页面所有资源加载完毕后回调函数
+            img.addEventListener('load',function(){})    // 等待图片加载完毕后回调函数
+        - DOMContentLoaded    // 初始HTML加载完毕事件（对象document）
+        - scroll       // 滚动事件
+        - resize
 
-// 事件对象
-    // 事件监听器函数的参数，通常命名为event、e或eve，包含事件信息
-    function(e) {
-        console.log(e.target)  // 触发事件的元素
-        console.log(e.type)    // 事件类型，如'click'
-        e.preventDefault()     // 阻止默认行为，如表单提交
-        e.stopPropagation()    // 阻止事件冒泡
-        // 键盘事件
-        console.log(e.key)     // 按键值，如'Enter'
-        // 鼠标事件
-        console.log(e.clientX, e.clientY)  // 鼠标相对于视窗位置
-        console.log(e.offsetX, e.offsetY)  // 鼠标相对于触发元素位置
-    }
-    // 用法示例
-    input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            console.log('按下了 Enter', e.target.value)
+    // 事件监听
+        // 绑定
+        对象.addEventListener('事件类型',函数)
+        // 解绑: 匿名函数无法解绑
+        对象.removeEventListener('事件类型',函数)
+
+    // 事件对象
+        // 事件监听器函数的参数，通常命名为event、e或eve，包含事件信息
+        function(e) {
+            console.log(e.target)  // 触发事件的元素
+            console.log(e.type)    // 事件类型，如'click'
+            e.preventDefault()     // 阻止默认行为，如表单提交
+            e.stopPropagation()    // 阻止事件冒泡
+            // 键盘事件
+            console.log(e.key)     // 按键值，如'Enter'
+            // 鼠标事件
+            console.log(e.clientX, e.clientY)  // 鼠标相对于视窗位置
+            console.log(e.offsetX, e.offsetY)  // 鼠标相对于触发元素位置
         }
-    })
-
-// 环境对象
-    this  // 指向当前执行上下文的对象
-        // 在全局作用域中（非函数内），this 指向 window 对象
-        // 没有对象的普通函数，this 指向 window
-        // 有对象的函数，this 指向调用它的对象
-        // 在事件监听器中，this 指向触发事件的元素
-        // 在构造函数中，this 指向新创建的实例
-        // 示例
-        button.addEventListener('click', function() {
-            console.log(this)  // 指向 button 元素
+        // 用法示例
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                console.log('按下了 Enter', e.target.value)
+            }
         })
+
+    // 环境对象
+        this  // 指向当前执行上下文的对象
+            // 在全局作用域中（非函数内），this 指向 window 对象
+            // 没有对象的普通函数，this 指向 window
+            // 有对象的函数，this 指向调用它的对象
+            // 在事件监听器中，this 指向触发事件的元素
+            // 在构造函数中，this 指向新创建的实例
+            // 示例
+            button.addEventListener('click', function() {
+                console.log(this)  // 指向 button 元素
+            })
+
+    // 事件流：事件在DOM树中的传播过程
+        // 捕获阶段：事件从根元素向下传播到目标元素。
+        // 冒泡阶段：事件从目标元素向上传播回根元素。
+        对象.addEventListener('事件类型', 事件处理函数, 是否使用捕获机制)   // 第三个参数：true 为捕获阶段，false（默认）为冒泡阶段
+            // 阻断事件流传播，把事件限制在当前元素内
+            e.stopPropagation
+
+    // 事件委托: 给父元素
+        e.target.tagName    // tagName的元素要大写，对具体子元素操作得加target，如e.target.innerHTML
+    
+    // 阻止事件默认行为
+        e.preventDefault

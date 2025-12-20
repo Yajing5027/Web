@@ -87,7 +87,8 @@
     // 单选框选择状态影响全选框
     for (let i = 0; i < checks.length; i++){
         checks[i].addEventListener('click',function(){
-            allCheck.checked = document.querySelectorAll('.ck:checked').length === checks.length  // 不能提前声明 .ck:checked，因为它是动态的，提前声明会变成静态快照，无法实时反映选中状态
+          const checkedBox = document.querySelectorAll('.ck:checked') // 不能全局声明.ck:checked，会导致只有静态快照，无法实时反映选中状态
+          allCheck.checked = checkedBox.length === checks.length
         })
     }
   </script>

@@ -95,9 +95,9 @@
     const items = document.querySelectorAll('.item')
     for (let i = 0; i < as.length; i++) {
         as[i].addEventListener('mouseenter',function(){
-            document.querySelector('.tab-nav .active').classList.remove('active')  // 不能提前声明 .active 元素，因为它是动态的，提前声明会变成静态快照，无法实时反映当前 active 状态
-            document.querySelector('.tab-content .active').classList.remove('active')  // 同上
+            document.querySelector('.tab-nav .active').classList.remove('active')  // 不能全局声明 .active 元素，会导致只有静态快照，无法实时反映当前 active 状态
             this.classList.add('active')    // 环境变量
+            document.querySelector('.tab-content .active').classList.remove('active')  // 同上
             items[i].classList.add('active')
             // document.querySelector(`.tab-content .item:nth.child(${i+1})`).classList.add('active')  // slider里用过的子元素选择也可以，前面就不用声明items了
         })

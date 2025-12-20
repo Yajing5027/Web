@@ -22,47 +22,65 @@
   - 示例：li:nth-child(2) 选择第2个li；p:nth-child(odd) 选择奇数位置的p；input:checked { background: yellow; }
 */
 
-/* display属性总结：控制元素布局和显示方式
-常见值：
-- block：块级元素，独占一行
-- inline：内联元素，不独占行
-- inline-block：内联块级
-- none：隐藏元素
-    等同于：
-    - css: opacity: 0（仍占空间）
-    - HTML: hidden属性
-- flex：弹性布局
-- grid：网格布局
-等
-JS设置：对象.style.display = 'block' 或 'none' 等 */
+/* 属性
+  display属性总结：控制元素布局和显示方式
+    常见值：
+    - block：块级元素，独占一行
+    - inline：内联元素，不独占行
+    - inline-block：内联块级
+    - none：隐藏元素
+        等同于：
+        - css: opacity: 0（仍占空间）
+        - HTML: hidden属性
+    - flex：弹性布局
+    - grid：网格布局
+  
+  overflow属性：控制内容溢出时的显示方式
+    - visible：默认，内容溢出可见
+    - hidden：隐藏溢出内容
+    - scroll：显示滚动条（即使不溢出）
+    - auto：自动显示滚动条（溢出时显示）
+    - 示例：overflow: hidden; // 隐藏滚动条
+    - JS设置：对象.style.overflow = 'hidden';
 
-/* opacity属性：控制元素透明度
-- 值：0到1，0完全透明（隐藏），1完全不透明（显示）。
-- 示例：opacity: 0.5; // 半透明
-- JS设置：对象.style.opacity = '0.5';
+  opacity属性：控制元素透明度
+    - 值：0到1，0完全透明（隐藏），1完全不透明（显示）。
+    - 示例：opacity: 0.5; // 半透明
+    - JS设置：对象.style.opacity = '0.5';
+
+  transform属性：控制元素变换
+    - 值：rotate(角度) 旋转、scale(倍数) 缩放、translate(x,y) 平移 等
+    - 示例：transform: rotate(45deg); // 旋转45度
+    - JS设置：对象.style.transform = 'rotate(45deg)';
+
+  transition属性：控制CSS属性变化的过渡效果
+    - 值：property duration timing-function delay（可省略部分）
+    - all .3s：所有属性，0.3秒过渡，默认ease，无延迟
+    - 示例：transition: all 0.3s ease; // 平滑过渡所有属性
+    - JS设置：对象.style.transition = 'all 0.3s';
 */
 
 /* Emmet CSS缩写（在CSS文件中输入缩写+Tab展开）
-尺寸：
-- w200 → width: 200px;
-- h200 → height: 200px;
-- m10 → margin: 10px;
-- p20 → padding: 20px;
-- m0a → margin: 0 auto;
+  尺寸：
+  - w200 → width: 200px;
+  - h200 → height: 200px;
+  - m10 → margin: 10px;
+  - p20 → padding: 20px;
+  - m0a → margin: 0 auto;
 
-颜色：
-- bgc#fff → background-color: #fff;
-- c#000 → color: #000;
+  颜色：
+  - bgc#fff → background-color: #fff;
+  - c#000 → color: #000;
 
-布局：
-- db → display: block;
-- dib → display: inline-block;
-- fl → float: left;
-- fr → float: right;
+  布局：
+  - db → display: block;
+  - dib → display: inline-block;
+  - fl → float: left;
+  - fr → float: right;
 
-其他：
-- fz14 → font-size: 14px;
-- bd → border: 1px solid #000;
-- bdr5 → border-radius: 5px;
-- tac → text-align: center;
+  其他：
+  - fz14 → font-size: 14px;
+  - bd → border: 1px solid #000;
+  - bdr5 → border-radius: 5px;
+  - tac → text-align: center;
 */
