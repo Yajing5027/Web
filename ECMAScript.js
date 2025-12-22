@@ -36,6 +36,12 @@ let num1 = 10, num2 = 20
         数组.shift()    //删减开头，括号内不加任何参数
         数组.splice(起始索引位置,个数)  //指定位置
 
+    // 查
+        数组.includes(searchElement)    // 检查数组是否包含指定的元素，返回布尔值（ES6）
+        // 示例：[1,2,3].includes(2) // true
+        数组.slice(start, end)    // 提取子数组，从start到end（不包括end），支持负索引（ES3）
+        // 示例：[1,2,3,4].slice(1,3) // [2,3]
+
     // js中长度是数组的属性，用 数组.length; python中长度是一个方法函数，用len()
         numbers.length
 
@@ -50,6 +56,12 @@ let num1 = 10, num2 = 20
     // 取模运算循环数组索引：循环0到arr.length-1
         i = (i + 1) % 数组.length      // 向后循环
         i = (i - 1 + 数组.length) % 数组.length   // 向前循环，避免负索引
+        
+    // for...of 循环：遍历可迭代对象的值（ES6），类似于 Python 的 for x in list
+        for (let item of array) { // item 是每次的值
+            // 代码
+        }
+        // 示例：for (let char of 'hello') { console.log(char); } // 'h','e','l','l','o'
         
 // Template Literal: ` ${} ` like <f string   in python>
 console.log(`The number array is ${numbers} and the array length is ${numbers.length}`)
@@ -94,6 +106,12 @@ False：0、false、null、undefined、NaN、""（空字符串）。
 
     // 字符串方法
         str.trim()     // 去除两端空白字符，相当于Python的strip()
+        str.includes(searchString)    // 检查字符串是否包含指定的子字符串，返回布尔值（ES6）
+        // 示例：'hello'.includes('ll') // true
+        str.slice(start, end)    // 提取子字符串，从start到end（不包括end），支持负索引（ES3）
+        // 参数：start（必需，开始索引，负数从末尾算），end（可选，结束索引，默认到末尾）
+        // 示例：'hello'.slice(-2) // 'lo' （从末尾第2个字符到末尾）
+        // 示例：'hello'.slice(1,4) // 'ell' （从索引1到4，不包括4）
 */
 
 

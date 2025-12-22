@@ -102,6 +102,7 @@ clearInterval(变量名)
         - focus        // 元素获得焦点事件
         - blur         // 元素失去焦点事件
         - input        // 输入框内容改变事件
+        - submit       // 表单提交事件（用于 form 元素）
         - load         // 所有外部资源加载完毕事件
             window.addEventListener('load',function(){})    // 等待页面所有资源加载完毕后回调函数
             img.addEventListener('load',function(){})    // 等待图片加载完毕后回调函数
