@@ -32,11 +32,10 @@
     </div>
 
     <script>
-        const box = document.querySelector('.box');
-        const box1 = document.querySelector('.box1');
+        const closebutton = document.querySelector('.box1');
 
-        box1.addEventListener('click', function() {  // 给按钮添加事件监听
-            box.style.display = 'none';  // 隐藏大盒子
+        closebutton.addEventListener('click', function() {  // 给按钮添加事件监听
+            closebutton.parentNode.style.display = 'none';  // 隐藏大盒子
         });
     </script>
 </body>

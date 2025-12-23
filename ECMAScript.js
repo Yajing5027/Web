@@ -158,6 +158,8 @@ False：0、false、null、undefined、NaN、""（空字符串）。
 /*
 // 条件语句
     // if 后要加() 后要加{}
+        // 注意：如果 if 后只有一条语句，可以省略大括号，但不建议（易出错）
+        // 示例：if (cond) console.log('ok'); // 省略大括号
     if (条件) {
         blank
     } else if (blank) {     // 不能跟python里一样写elif
@@ -230,7 +232,7 @@ function 函数名() {
     blank
 }l
     // 立即执行函数
-    (function (){})()   //如果函数需要参数，最后一个括号需要传入参数
+    (function (){})();   //如果函数需要参数，最后一个括号需要传入参数
 */
 
 
@@ -288,11 +290,12 @@ let 对象名 = {
                 Math.sin(x); Math.cos(x); Math.tan(x)     //三角函数
                 Math.log(x)     //自然对数
                 Math.exp(x)     //e 的 x 次幂
-*/
 
-function getRandom(N,M) {
-    return Math.floor(Math.random() * (M - N + 1)) + N
-}
-或者是
-    return parseInt(Math.random() * (M - N + 1)) + N
+            // 生成 [N, M] 之间的随机整数（包括 N 和 M）
+                function getRandom(N,M) {
+                    return Math.floor(Math.random() * (M - N + 1)) + N
+                }
+                或者是
+                    return parseInt(Math.random() * (M - N + 1)) + N
+*/
 // 栈和堆：76集

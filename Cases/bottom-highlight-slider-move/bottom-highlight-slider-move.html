@@ -15,14 +15,11 @@
 </head>
 
 <body>
-  <!-- 头部模块 -->
   <header class="suspension">
     <div class="m-navbar">
-      <!-- logo -->
       <a href="#" class="logo">
         <i class="iconfont Navbar_logo"></i>
       </a>
-      <!-- 右侧 -->
       <div class="right">
         <a href="#" class="search">
           <i class="iconfont ic_search_tab"></i>
@@ -37,7 +34,6 @@
     </div>
     <div class="channel-menu">
       <div class="tabs">
-        <!-- 很宽的盒子 -->
         <div class="tabs-list">
           <a href="#">首页</a>
           <a href="#">动画</a>
@@ -47,7 +43,6 @@
           <a href="#">舞蹈</a>
           <a href="#">鬼畜</a>
           <a href="#">吹鬼</a>
-          <!-- 红色线 -->
           <div class="line"></div>
         </div>
       </div>
@@ -57,13 +52,11 @@
     </div>
   </header>
 
-  <!-- 主体部分 -->
   <div class="m-home">
     <div class="video-list">
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -82,7 +75,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -101,7 +93,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -120,7 +111,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -139,7 +129,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -158,7 +147,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -177,7 +165,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -196,7 +183,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -215,7 +201,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -234,7 +219,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -253,7 +237,6 @@
       <a href="#" class="video-item">
         <div class="card">
           <img src="./images/dog.jpg@480w_270h_1c" alt="">
-          <!-- 播放量 -->
           <div class="count">
             <span>
               <i class="iconfont icon_shipin_bofangshu"></i>
@@ -272,7 +255,6 @@
     </div>
   </div>
 
-  <!-- 底部模块 -->
   <footer class="app">
     <div class="btn-app">
       <i class="iconfont Navbar_logo"></i>
@@ -280,39 +262,14 @@
     </div>
   </footer>
   <script>
-    /* 
-    需求：当点击链接，下面红色滑块跟着移动
-    分析：
-    ①：用到事件委托
-    ②：点击链接得到当前元素的 offsetLeft值
-    ③：修改line 颜色块的 left 值 = 点击链接的offsetLeft
-    ④： 添加过渡效果
-    */
-
-    
-    // 1. 事件委托的方法 获取父元素 tabs-list 添加事件委托
-    const list = document.querySelector('.tabs-list')
-    // 5.获取父元素 line
     const line = document.querySelector('.line')
-
-    // 2. 给a注册点击事件
-    list.addEventListener('click', function (e) {
-      // 3.判断点击的是a 只有点击了A 才有触发效果
-      if (e.target.tagName === 'A') {
-        // console.log(11)
-        // 当前元素是谁 ？  e.target
-
-        // 4.得到当前链接的offsetLeft即 点击元素的位置
-        // console.log(e.target.offsetLeft)
-
-        // 6.让line盒子来进行移动
-        // line.style.transform = 'translateX(100px)'
-        // 7.把我们点击的a链接盒子的位置  然后移动
-        line.style.transform = `translateX(${e.target.offsetLeft}px)`
+    const channels = document.querySelector('.tabs-list')
+    // 添加事件委托
+    channels.addEventListener('mouseover',function(e){
+      if (e.target.tagName === 'A'){
+        line.style.transform = `translateX(${e.target.offsetLeft}px)`   // 获取左侧值
       }
     })
-
   </script>
 </body>
-
 </html>

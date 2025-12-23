@@ -23,10 +23,10 @@ document.querySelectorAll('css选择器')  //返回伪数组，需要遍历才�
         // 元素尺寸和位置
             // 滚动
                 // scroll：读写滚动距离，只读内容总尺寸（包括不可见部分）
-                对象.scrollTop    // 垂直滚动距离（像素）
-                对象.scrollLeft   // 水平滚动距离（像素）
-                对象.scrollWidth    // 内容总宽度（包括不可见部分）
-                对象.scrollHeight   // 内容总高度（包括不可见部分）
+                对象.scrollTop    // 可读写：垂直滚动距离（像素）
+                对象.scrollLeft   // 可读写：水平滚动距离（像素）
+                对象.scrollWidth    // 只读：内容总宽度（包括不可见部分）
+                对象.scrollHeight   // 只读：内容总高度（包括不可见部分）
     
                 // 滚动方法：只写
                 window.scrollTo(x, y)  // 滚动到指定位置（x水平像素，y垂直像素）
@@ -109,6 +109,20 @@ clearInterval(变量名)
         - DOMContentLoaded    // 初始HTML加载完毕事件（对象document）
         - scroll       // 滚动事件
         - resize
+        
+        // M端（移动端）触摸事件与注意事项
+        - touchstart      // 触摸开始（首次接触屏幕）
+        - touchmove       // 触摸移动（手指滑动）
+        - touchend        // 触摸结束（手指离开屏幕）
+        - touchcancel     // 触摸被中断（如系统弹窗、来电等）
+            // TouchEvent 常用属性（事件对象 e）
+                e.touches           // 当前屏幕上所有触点（TouchList）
+                e.targetTouches     // 当前目标元素上的触点（TouchList）
+                e.changedTouches    // 本次事件中发生变化的触点（TouchList）
+            // Touch 对象常用属性
+                Touch.identifier    // 触点 id（用于多指触控跟踪）
+                Touch.clientX, clientY  // 相对视口的坐标
+                Touch.pageX, pageY      // 相对页面（含滚动）的坐标
 
     // 事件监听
         // 绑定
@@ -153,10 +167,91 @@ clearInterval(变量名)
         // 冒泡阶段：事件从目标元素向上传播回根元素。
         对象.addEventListener('事件类型', 事件处理函数, 是否使用捕获机制)   // 第三个参数：true 为捕获阶段，false（默认）为冒泡阶段
             // 阻断事件流传播，把事件限制在当前元素内
-            e.stopPropagation
-
-    // 事件委托: 给父元素
-        e.target.tagName    // tagName的元素要大写，对具体子元素操作得加target，如e.target.innerHTML
-    
+                e.stopPropagation
+            // 事件委托: 给父元素，依赖于事件冒泡
+                e.target.tagName    // tagName的元素要大写，对具体子元素操作得加target，如e.target.innerHTML
+            
     // 阻止事件默认行为
         e.preventDefault
+
+
+// 节点
+    // 元素节点（常用属性与方法）
+        // 查找
+            // 父节点
+                parentNode           // 返回父节点（可能是 Element、Document 或 null）
+                parentElement        // 返回父元素（Element 或 null，若父节点不是元素则为 null）
+
+            // 子节点
+                childNodes           // 返回 NodeList（包含元素、文本、注释等所有子节点）
+                children             // 返回 HTMLCollection（仅包含元素子节点）
+
+            // 兄弟节点
+                previousElementSibling    // 上一个兄弟元素
+                nextElementSibling        // 下一个兄弟元素
+
+        // 增加
+            document.createElement('标签名')     // 创建新元素节点
+            parent.appendChild(node)             // 将 node 添加为 parent 的最后一个子节点
+            parent.insertBefore(newNode, ref)    // 在 ref 节点前插入 newNode
+            element.cloneNode(true)              // 克隆元素（true 深拷贝，包括子节点；false 浅拷贝）
+
+        // 删除
+            parent.removeChild(child)            // 删除指定的子节点 child
+
+        // 修改
+            parent.replaceChild(newNode, old)   // 用 newNode 替换 old 子节点
+
+
+        // 节点类型常量（用于判断节点类型）
+            Node.ELEMENT_NODE   // 1
+            Node.TEXT_NODE      // 3
+            Node.COMMENT_NODE   // 8
+
+// 日期对象
+    // 实例化创建日期对象
+    new Date()  // 当前日期和时间
+        // 指定日期字符串（推荐使用 ISO 格式，如 '2023-12-22T10:30:00'）
+        new Date('2023-12-22')  
+        // 指定年、月、日、时、分、秒（可选毫秒）
+        new Date(2023, 11, 22, 10, 30, 0)  // 年、月、日、时、分、秒
+        // 指定时间戳（毫秒数，从1970-01-01 00:00:00开始）
+        new Date(1703242200000)  // 时间戳
+
+    // 获取日期和时间
+    日期对象.getFullYear()     // 获取年份（4位数字）
+    日期对象.getMonth()        // 获取月份（0-11，0表示1月）
+    日期对象.getDate()         // 获取日期（1-31）
+    日期对象.getDay()          // 获取星期（0-6，0表示星期日）
+    日期对象.getHours()        // 获取小时（0-23）
+    日期对象.getMinutes()      // 获取分钟（0-59）
+    日期对象.getSeconds()      // 获取秒钟（0-59）
+    日期对象.getMilliseconds() // 获取毫秒（0-999）
+
+    // 时间戳
+    +new Date()                // 当前及指定时间戳
+    日期对象.getTime()         // 当前及指定时间戳（需要实例化，毫秒数，从1970-01-01 00:00:00开始）
+    Date.now()                 // 仅当前时间戳
+
+    // 格式化输出
+    日期对象.toLocaleString()  // 本地化日期时间字符串
+    日期对象.toLocaleDateString()  // 本地化日期字符串
+    日期对象.toLocaleTimeString()  // 本地化时间字符串
+
+
+    // 示例
+    const now = new Date();
+    console.log(now.getFullYear());  // 2023
+    console.log(now.getMonth() + 1); // 12（月份从0开始，需要+1）
+    console.log(now.getTime());      // 时间戳
+
+    // 补零操作：用于格式化日期时间（如月份、日小于10时补0）
+        num < 10 ? '0' + num : num;
+
+    // 时间戳毫秒转换成秒 再用秒转换公式：
+        const totalSeconds = 时间戳 / 1000;  // 时间戳转秒
+        d = parseInt(totalSeconds / 60 / 60 / 24); // 天
+        h = parseInt(totalSeconds / 60 / 60 % 24); // 时
+        m = parseInt(totalSeconds / 60 % 60); // 分
+        s = parseInt(totalSeconds % 60); // 秒
+        

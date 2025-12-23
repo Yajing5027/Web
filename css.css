@@ -58,6 +58,11 @@
     - all .3s：所有属性，0.3秒过渡，默认ease，无延迟
     - 示例：transition: all 0.3s ease; // 平滑过渡所有属性
     - JS设置：对象.style.transition = 'all 0.3s';
+
+  scroll-behavior属性：控制滚动行为的平滑度
+    - 值：auto（默认，瞬间滚动）、smooth（平滑滚动）
+    - 示例：scroll-behavior: smooth; // 平滑滚动
+    - JS设置：对象.style.scrollBehavior = 'smooth';
 */
 
 /* Emmet CSS缩写（在CSS文件中输入缩写+Tab展开）

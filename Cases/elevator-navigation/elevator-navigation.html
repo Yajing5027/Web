@@ -1215,128 +1215,49 @@
     </ul>
   </div>
   <script>
-    // 第一大模块，页面滑动可以显示和隐藏
-    (function () {
-      // 2.获取元素
-      const entry = document.querySelector('.xtx_entry')
-      const elevator = document.querySelector('.xtx-elevator')
-      // 1.给页面添加滚动事件
-      window.addEventListener('scroll', function () {
-        // 被卷去的头部大于300
-        const n = document.documentElement.scrollTop
-        // 3.页面滚动大于300，就显示电梯导航
-        // if (n >= 300) {
-        //   elevator.style.opacity = 1
-        //   elevator.style.opacity = 0
-        // }
-        // 简写 三元
-        elevator.style.opacity = n >= entry.offsetTop ? 1 : 0 // (盒子没定位的时候使用)entry.offsetTop盒子上下移动 自动检测
-      })
-
-      // 点击返回页面顶部
-      const backTop = document.querySelector('#backTop')
-      backTop.addEventListener('click', function () {
-        // 可读写
-        // document.documentElement.scrollTop = 0
-        // window.scrollTo(x, y)
-        window.scrollTo(0, 0)
+    // 页面滑动隐藏和显示电梯导航
+    (function(){    // 自执行函数防止变量污染
+      const header = document.querySelector('.xtx_entry')
+      const elevator = document.querySelector('.xtx-elevator') 
+      window.addEventListener('scroll',function(){
+        elevator.hidden = document.documentElement.scrollTop > header.offsetTop ? false : true
       })
     })();
 
-    // 第二第三模块都放到另外一个执行函数里面
-    (function () {
-      // 2.点击页面可以滑动
-      const list = document.querySelector('.xtx-elevator-list')
-      // 事件委托
-      list.addEventListener('click', function (e) {
-        // console.log(11)
-
-        // 首先选择既是a，并且点击的对象必须有自定义属性
+    // 电梯导航点击跳转和滚动高亮
+    (function(){
+      const header = document.querySelector('.xtx_header')
+      const elevator = document.querySelector('.xtx-elevator') 
+      elevator.addEventListener('click',function(e){
         if (e.target.tagName === 'A' && e.target.dataset.name) {
-
-          // 排他思想  
-          // 先移除原来的类active 
-          // 先获取这个active的对象
-
-          // 不能直接获取这个类，然后移除，会报错
-          //  document.querySelector('.xtx-elevator-list .active').classList.remove('active')
-
-          const old = document.querySelector('.xtx-elevator-list .active')
-          // console.log(old) //null 
-
-          /* 
-          判断 如原来有active类的对象，就移除类，如开始就没有对象，就不删除，所以不报错
-
-          首先上一步获取active这个类，找到返回该对象，找不到返回null
-          第一次点击没有，old返回null，那if(null)为假，就不执行下面语句，不会报错
-          如果old返回对象，那么if为真，就执行语句 移除这个类
-          */
-          if (old) old.classList.remove('active') // 一句话可以不用花括号
-
-          // 当前元素添加 active 
+          const oldActive = document.querySelector('.xtx-elevator .active')
+          if (oldActive) {oldActive.classList.remove('active')}
           e.target.classList.add('active')
-
-          // 获得自定义属性  如获得new  topic等
-          // console.log(e.target.dataset.name)
-          // 根据小盒子的自定义属性值 去选择 对应的大盒子
-          //  console.log( document.querySelector(`.xtx_goods_new`))
-          // console.log(document.querySelector(`.xtx_goods_${e.target.dataset.name}`).offsetTop)
-
-          // 获得对应大盒子的 offsetTop
-          const top = document.querySelector(`.xtx_goods_${e.target.dataset.name}`).offsetTop
-          // 让页面滚动到对应的位置
-          document.documentElement.scrollTop = top
+          document.documentElement.scrollTop = document.querySelector(`.xtx_goods_${e.target.dataset.name}`).offsetTop
+        } else if (e.target.tagName === 'A' && e.target.id === 'backTop'){
+          document.documentElement.scrollTop = 0
         }
       })
-
-      // 3. 页面滚动，可以根据大盒子选 小盒子 添加 active 类
-      window.addEventListener('scroll', function () {
-        //  3.1  先移除类 
-        // 先获取这个active的对象
-        const old = document.querySelector('.xtx-elevator-list .active')
-        // console.log(old)
-        // 判断 如果原来有active类的对象，就移除类，如果开始就没有对象，就不删除，所以不报错
-        if (old) old.classList.remove('active')
-
-        // 3.2 判断页面当前滑动的位置，选择小盒子
-        /* 
-          当页面划到新鲜好物就把新鲜好物盒子选出来添加这个类名
-          怎么知道就是滑动到新鲜好物的位置？ 参考秒杀模块
-          页面卷去的头部scrolltop大于等于页面盒子的offsettop
-        */
-        // 获取4个大盒子
-        const news = document.querySelector('.xtx_goods_new')
-        const popular = document.querySelector('.xtx_goods_popular')
-        const brand = document.querySelector('.xtx_goods_brand')
-        const topic = document.querySelector('.xtx_goods_topic')
-        const n = document.documentElement.scrollTop
-        if (n >= news.offsetTop && n < popular.offsetTop) {
-          // 选择第一个小盒子
-          document.querySelector('[data-name=new]').classList.add('active')
-        } else if (n >= popular.offsetTop && n < brand.offsetTop) {
-          document.querySelector('[data-name=popular]').classList.add('active')
-        } else if (n >= brand.offsetTop && n < topic.offsetTop) {
-          document.querySelector('[data-name=brand]').classList.add('active')
-        } else if (n >= topic.offsetTop) {
-          document.querySelector('[data-name=topic]').classList.add('active')
-        }  // 底部没有内容，else也可以，以防底部最新专题有新出内容需要用到判断大于某某并且小于谁，最好else if
-
-
+      
+      window.addEventListener('scroll',function(){
+        const newTop = document.querySelector('.xtx_goods_new').offsetTop;
+        const popularTop = document.querySelector('.xtx_goods_popular').offsetTop;
+        const brandTop = document.querySelector('.xtx_goods_brand').offsetTop;
+        const topicTop = document.querySelector('.xtx_goods_topic').offsetTop;
+        const scrollTop = document.documentElement.scrollTop;
+        const oldActive = document.querySelector('.xtx-elevator .active');
+        if (oldActive) oldActive.classList.remove('active');
+        if (scrollTop >= newTop && scrollTop < popularTop) {
+          document.querySelector('.xtx-elevator [data-name="new"]').classList.add('active');
+        } else if (scrollTop >= popularTop && scrollTop < brandTop) {
+          document.querySelector('.xtx-elevator [data-name="popular"]').classList.add('active');
+        } else if (scrollTop >= brandTop && scrollTop < topicTop) {
+          document.querySelector('.xtx-elevator [data-name="brand"]').classList.add('active');
+        } else if (scrollTop >= topicTop) {
+          document.querySelector('.xtx-elevator [data-name="topic"]').classList.add('active');
+        }
       })
-
-
     })();
-
-    /*
-    错误写法
-    let n = document.documentElement.scrollTop
-     n = top 
- 
-     相当于n存了一个新值
-     let n = 10
-     n = 20
-
-     */
   </script>
 </body>
 
